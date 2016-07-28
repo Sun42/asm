@@ -1,0 +1,49 @@
+00401000 > $ 8BC0           MOV EAX,EAX
+00401002   . 90             NOP
+00401003   . 8BC3           MOV EAX,EBX
+00401005   . 90             NOP
+00401006   . 8BC1           MOV EAX,ECX
+00401008   . 90             NOP
+00401009   . 8BC2           MOV EAX,EDX
+0040100B   . 90             NOP
+0040100C   . 8BC7           MOV EAX,EDI
+0040100E   . 90             NOP
+0040100F   . 8BD8           MOV EBX,EAX
+00401011   . 90             NOP
+00401012   . 8BDB           MOV EBX,EBX
+00401014   . 90             NOP
+00401015   . 8BD9           MOV EBX,ECX
+00401017   . 90             NOP
+00401018   . 8BDA           MOV EBX,EDX
+0040101A   . 90             NOP
+0040101B   . 8BDF           MOV EBX,EDI
+0040101D   . 90             NOP
+0040101E   . 8BC8           MOV ECX,EAX
+00401020   . 90             NOP
+00401021   . 8BCB           MOV ECX,EBX
+00401023   . 90             NOP
+00401024   . 8BC9           MOV ECX,ECX
+00401026   . 90             NOP
+00401027   . 8BCA           MOV ECX,EDX
+00401029   . 90             NOP
+0040102A   . 8BCF           MOV ECX,EDI
+0040102C   . 90             NOP
+0040102D   . 8BD0           MOV EDX,EAX
+0040102F   . 90             NOP
+00401030   . 8BD3           MOV EDX,EBX
+00401032   . 90             NOP
+00401033   . 8BD1           MOV EDX,ECX
+00401035   . 90             NOP
+00401036   . 8BD2           MOV EDX,EDX
+00401038   . 90             NOP
+00401039   . 8BD7           MOV EDX,EDI
+0040103B   . 90             NOP
+0040103C   . 8BF8           MOV EDI,EAX
+0040103E   . 90             NOP
+0040103F   . 8BFB           MOV EDI,EBX
+00401041   . 90             NOP
+00401042   . 8BF9           MOV EDI,ECX
+00401044   . 90             NOP
+00401045   . 8BFA           MOV EDI,EDX
+00401047   . 90             NOP
+00401048   . 8BFF           MOV EDI,EDI

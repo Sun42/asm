@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "asm.h"
+
+
+void *mymemmove(void *dest, const void *src, size_t n);
+
+int	main(int ac, char **av)
+{
+  char	*str;
+  char	*str2;
+  char	*str3;
+
+  str = "123456789";
+  str2 = malloc(sizeof(char)  * 11);
+  str3 = malloc(sizeof(char) * 11);
+  str2 = memcpy(str2, str, 11);
+  printf("memcpy --> %s \n", str2);
+  printf("-- %i> \n", str2);
+  /*str2 = mymemmove(str2 + 3, str2, 5);*/
+  printf("mymemove ---> %s \n", str2);
+  printf("-- %i \n", str2);
+  return (0);
+}

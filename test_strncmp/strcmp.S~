@@ -1,0 +1,30 @@
+/*
+* void *memcpy (void *dest, const void *src, size_t n) ;
+*/
+
+#include		"asm.h"
+
+	/*%esi %edi*/
+
+GLOBAL_FUNC(mymemcpy)
+	pushl	%ebp		/* prologue*/
+	movl	%esp, %ebp	/* prologue*/
+
+	movl	8(%esp), %ebx	/* ebx = dest */
+	movl	12(%esp), %edx	/* edx = src*/
+	movl	16(%esp), %edi	/* esi = n*/
+	pushl   %ebx              /* push dest sur la pile */
+boucle:
+	cmpl	$0, %edi	/* if n == 0*/
+	je	fin		/*goto fin */
+	movb	(%edx), %al    /* eax = *src */
+	movb	%al, (%ebx)	/* *dest = *src*/
+	decl	%edi		/*n--*/
+	incl	%ebx		/* dest++*/
+	incl	%edx		/* src++*/
+	jmp	boucle
+fin :
+	popl	%eax		/* pop dest*/
+	leave
+	ret
+FUNC_END(mymemcpy)

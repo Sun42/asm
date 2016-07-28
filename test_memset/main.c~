@@ -1,0 +1,23 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "asm.h"
+
+
+void *mymemset(void *s, int c, size_t n);
+int	main(int ac, char **av)
+{
+  char	*str;
+  char	*str2;
+
+  if (ac == 3)
+    {
+      str = malloc(sizeof(char) * 6);
+      str2 = malloc(sizeof(char) * 6);
+      printf("Official --> %s \n", memset(str, av[1][0], 6));
+      printf("Strlen official --> %i \n", strlen(str));
+      printf("Asm --> %s \n", mymemset(str2, av[1][0], 6));
+      printf("Strlen Asm --> %i \n", strlen(str2));
+    }
+  return (0);
+}

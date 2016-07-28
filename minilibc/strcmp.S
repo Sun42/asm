@@ -1,0 +1,36 @@
+/*
+**	int strcmp(const char *s1, const char *s2);
+**	test : firefox, gimp : ok
+*/
+
+#include		"asm.h"
+
+
+GLOBAL_FUNC(strcmp)
+
+	pushl	%ebp		/* prologue*/
+	movl	%esp, %ebp	/* prologue*/
+
+	pushl	%ebx		/*not ready for use */
+	movl	8(%ebp), %ebx	/* ebx = s1 */
+	movl	12(%ebp), %ecx	/* ecx = s2*/
+
+loop:
+	movb	(%ebx), %dl
+	cmpb	%dl, (%ecx)
+	jne	fin		/* if *s1 != *s2 */
+	cmpb	$0, %dl
+	je	fin		/*if (*s2 == '\0') || (*s1 == '\0')*/
+	incl	%ebx
+	incl	%ecx
+	jmp	loop
+
+
+fin:
+	subb	(%ecx), %dl
+	movsbl	%dl, %eax
+	popl	%ebx		/*not ready for use ?*/
+	leave
+	ret
+
+FUNC_END(strcmp)

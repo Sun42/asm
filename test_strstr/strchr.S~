@@ -1,0 +1,34 @@
+/*
+** char *strchr(char *str, int n)
+*/
+
+#include		"asm.h"
+
+
+GLOBAL_FUNC(strchr)
+	pushl	%ebp		/* prologue*/
+	movl	%esp, %ebp	/* prologue*/
+	//pushl	%ebx		/* ebx not ready for use*/
+	movl	8(%ebp), %ebx	/* ebx = str*/
+	movl	12(%ebp), %edx	/* edx = n */
+
+boucle :
+	cmpb	(%ebx), %dl	/*if *str == n */
+	je	ok		/* goto ok*/
+	cmpb	$0, (%ebx)	/* if *str == 0 */
+	je	error
+	incl	%ebx		/* str++*/
+	jmp	boucle
+
+ok :
+	movl	%ebx, %eax
+	jmp	fin
+
+error:
+	xorl	%eax, %eax
+
+fin :
+	//popl	%ebx		/* ebx not ready for use*/
+	leave
+	ret
+FUNC_END(strchr)

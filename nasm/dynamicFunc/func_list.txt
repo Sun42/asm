@@ -1,0 +1,29 @@
+#LISTING DES FONCTIONS POUR ROSETTA STONED
+
+[Kernel32.dll] stdcall
+
+CreateFileA
+CreateFileMappingA
+CloseHandle
+ExitProcess
+FindFirstFileExA
+FindNextFileA
+GetCurrentDirectoryA
+lstrcat
+MapViewOfFile
+SetFilePointer
+UnmapViewOfFile
+WriteFile
+
+[User32.dll] stdcall
+MessageBoxA
+
+[msvcrt.dll] cdecl
+memcmp
+memcpy
+printf
+strcpy
+strncmp
+
+[Shlwapi.dll] ??
+StrDupA

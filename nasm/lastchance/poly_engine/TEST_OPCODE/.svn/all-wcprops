@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/nasm/!svn/ver/78/lastchance/poly_engine/TEST_OPCODE
+END
+decrypt.txt
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nasm/!svn/ver/65/lastchance/poly_engine/TEST_OPCODE/decrypt.txt
+END
+decrypt.asm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nasm/!svn/ver/78/lastchance/poly_engine/TEST_OPCODE/decrypt.asm
+END
+mov_reg_reg.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nasm/!svn/ver/58/lastchance/poly_engine/TEST_OPCODE/mov_reg_reg.txt
+END
+pop.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/nasm/!svn/ver/58/lastchance/poly_engine/TEST_OPCODE/pop.txt
+END
+pop.asm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/nasm/!svn/ver/58/lastchance/poly_engine/TEST_OPCODE/pop.asm
+END

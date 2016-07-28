@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 21
+/svn/nasm/!svn/ver/78
+END
+getdynamicfunc.asm
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/nasm/!svn/ver/26/getdynamicfunc.asm
+END
+Rosetta.asm
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/nasm/!svn/ver/26/Rosetta.asm
+END
+crypt.asm
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/nasm/!svn/ver/19/crypt.asm
+END
+keygen.asm
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/nasm/!svn/ver/21/keygen.asm
+END
+build.bat
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/nasm/!svn/ver/26/build.bat
+END
+cancer.cancer
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/nasm/!svn/ver/32/cancer.cancer
+END
+.emacs
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/nasm/!svn/ver/2/.emacs
+END
+compile-nasm-example.sh
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/nasm/!svn/ver/10/compile-nasm-example.sh
+END
+funcs.asm
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/nasm/!svn/ver/18/funcs.asm
+END

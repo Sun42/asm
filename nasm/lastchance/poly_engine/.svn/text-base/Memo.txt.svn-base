@@ -1,0 +1,63 @@
+
+Je pense a deux solutions choix:
+1.Est-ce qu' on ecrit un mini desassembleur qui dessasemblerait notre decrypteur , analyse les instructions, puis genere des instructions en consequence;
+(faisable en tricksant need de recuperer un code de l'instruction voulue a regenerer, et sa taille effective a parser || un nop delimiteur)
+(// voodoo maybe se servir de la pile ou d'un registre special qui reference l'instruction voulue)
+Mais ca m'a l'air un peu complique dans le temps imparti
+
+2.Est ce qu'on ecrit en dur une suite d'actions a generer, un peu lame mais bon c'est deja pas mal imho.
+
+Dans tout les cas, lorsqu'on connait l'action a effectuer, je pense a ca:
+On peut imaginer des fonctions qui executent une action precise sur le fond mais dont la forme est differente.
+Ces fonctions peuvent contenir differentes regles de transformation qui different d'opcode
+Ces fonctions retournent un int representant la taille de l'instruction
+On peut passer des parametres a ces fonctions pour preciser le registre a utiliser, la valeur de la constante un label de destination
+En option qui peut rox des mouettes d'alabama: passer une longueur maximale d'opcode a ne pas depasser, si la fonction ne trouve pas
+de regle plus petite ou egale la fonction echoue et retourne 0.
+
+
+DEFINE opcodelen int
+
+//junk instruction, do nothing
+opcodelen do_fucking_nothing()
+{
+int random index = getRandom(const register reg1)
+rules[] =
+1.xchg, reg1, reg1 =>
+2.nop		  => 1
+3.add reg1, 0     =>
+4.sub reg1, 0     =>
+5.push reg1; pop reg1
+write(rules[random_index].opcode);
+return (rules[random_index].opcodelen);
+}
+
+-Liste affectation registre:
+//affecte un regsitre == mov reg1, x
+opcodelen affect_reg(register: reg1, constante x)
+{
+rules[] =
+1.mov reg1, x => opcodelen
+2.mov reg1, x-y; add reg y => opcodelen
+3.mov reg1, y; sub reg, y-x => opcodelen
+4.push x; pop reg1 => opcodelen
+
+}
+
+//affecte un registre de la constante x mais need un registre libre en param
+opcodelen affect_reg2(register: reg1, constante: x, trash_register: reg2)
+{
+.xchg reg1, reg2; mov reg2, x; xchg reg2, xeg1
+}
+
+//Comparaison sur une constante puis jump:
+opcodelen cmp_reg_const_jump(register reg1, constante x, adresse : destination)
+.cmp	reg1, x; je destination
+.push	reg1;
+
+set_tozero(register: reg1)
+opcodelen {
+1.xor reg1, reg1
+2.sub reg1, reg1
+3.mov reg1, 0
+}

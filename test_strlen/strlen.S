@@ -1,0 +1,29 @@
+/*
+** size_t strlen(const char *str)
+*/
+
+#include		"asm.h"
+
+GLOBAL_FUNC(mystrlen)
+
+	pushl	%ebp		/* prologue*/
+	movl	%esp, %ebp	/* prologue*/
+
+	movl	8(%ebp), %edx	/* edx = str*/
+
+	xorl	%ecx, %ecx	/* ecx = 0*/
+	xorl	%eax, %eax	/* eax = 0*/
+	cmpb	$0, (%edx)	/* (if *edx == 0)*/
+	je	end		/* goto end*/
+
+cpt :
+	incl	%ecx		/*ecx++ */
+	addl	$1, %edx	/* edx++ */
+	cmpb	$0, (%edx)	/* if (*edx != 0)*/
+	jne	cpt		/* goto cpt*/
+
+end :
+	movl	%ecx, %eax	/* return (eax)*/
+	leave
+	ret
+FUNC_END(mystrlen)
