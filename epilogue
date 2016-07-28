@@ -1,0 +1,9 @@
+prologue =====
+push %ebp         -| enter
+mov %esp, %ebp    -| enter
+epilogue =====
+
+
+mov %ebp, %esp // -| leave
+pop %ebp //       -| leave
+pop %eip (forbidden)-| ret

@@ -1,0 +1,16 @@
+strlen.S ==> tested ok : firefox, gimp , ls, top
+strstr.S ==> test gimp , firefox : ok => fail a refaire
+strncmp.S ==> test ls, firefox, gimp : ok
+memcpy.S ==> test : ls , firefox, gimp ok
+memset.S ==>    test : gimp, firefox ok
+strcmp.S ==> test : firefox, gimp : ok
+strchr.S ==>    test : ls, firefox, gimp : ok
+rindex.S ==> test en tant ke (strqqchose)
+
+write.S ==> test emacs ok, trouver d'autres tests
+read.S - ==>  test top : ok ,  gimp, firefox : fail
+memmove.S ==> test emacs gtk : ok
+
+strcasecmp.S ==> fait : trouver un cas reel
+strspn.S  ==>  fait (le boulet ): trouver un cas reel
+strcspn.S ==> fait trouver un cas reel
